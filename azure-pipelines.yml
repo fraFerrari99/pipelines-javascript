@@ -24,6 +24,10 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
-- task: WhiteSource@21
+- task: WhiteSource@20
   inputs:
-    cwd: '$(System.DefaultWorkingDirectory)'
+    cwd: '$(Build.SourcesDirectory)'
+    extensions: '.dll'
+    checkPolicies: 'SEND_ALERTS'
+    projectRule: 'projectName'
+    projectName: '$(Build.Repository.Name)'
